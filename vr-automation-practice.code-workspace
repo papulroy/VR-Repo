@@ -1,0 +1,16 @@
+{
+	"folders": [
+		{
+			"path": "../Users/papul/Momentus Claude - Code/vr-automation-practice"
+		},
+		{
+			"path": "../VR Automation tests/momentus-enterprise-playwright-new-ui-automated-tests"
+		},
+		{
+			"path": "."
+		}
+	],
+	"settings": {
+		"editor.suggest.preview": true
+	}
+}
