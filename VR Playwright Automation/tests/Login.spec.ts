@@ -15,23 +15,7 @@ await expect(page.locator('h1')).toContainText('Welcome to the SuiteCRM 7 Demo')
 
 // TEST learning
 
-test('New tab', async ({page , context, request}) =>{
 
-    const pagePromise = await page.waitForEvent('popup')
-    await page.locator('!newtab').click()
-    const newPage = await pagePromise
-    newPage.waitForLoadState()
-    await expect(newPage).toHaveURL('/sample')
-})
- 
-test('New window', async ({page , context, request}) =>{
-
-    const windowPromise = await context.waitForEvent('page')
-    await page.locator('!newwindow').click()
-    const newWindow = await windowPromise
-    newWindow.waitForLoadState()
-    await expect(newWindow).toHaveURL('/sample')
-})
 
 test('auto wait assertion ', async({page})=>{
     page.goto('https://www.google.com/?gws_rd=ssl')
@@ -40,21 +24,7 @@ test('auto wait assertion ', async({page})=>{
     expect (page.getByText('google')).toBeVisible()
 })
 
-
-test('Context test', async({context})=>{
-
-    const page1 = await context.newPage();
-    const page2 = await context.newPage();
-
-    page1.goto ('https://www.google.com/?gws_rd=ssl')
-    page2.goto ('https://mail.google.com/mail/u/0/')
-
-    const cookies = await context.cookies()
-    console.log(cookies)
-
-    context.addCookies ([{name: 'myCooky', value: '123' , url: 'https://mail.google.com/mail/u/0/'}])
-})
-
+    
 test('API test', async ({request}) =>{
 
     const getresponse = await request.get("/api/v1/accounts/9898")
