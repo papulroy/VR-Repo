@@ -17,12 +17,21 @@ await expect(page.locator('h1')).toContainText('Welcome to the SuiteCRM 7 Demo')
 
 test('New tab', async ({page , context, request}) =>{
 
-    const pagePromise = await context.waitForEvent('page')
+    const pagePromise = await page.waitForEvent('popup')
     await page.locator('!newtab').click()
-    const newPage = pagePromise
+    const newPage = await pagePromise
     newPage.waitForLoadState()
+    await expect(newPage).toHaveURL('/sample')
 })
+ 
+test('New window', async ({page , context, request}) =>{
 
+    const windowPromise = await context.waitForEvent('page')
+    await page.locator('!newwindow').click()
+    const newWindow = await windowPromise
+    newWindow.waitForLoadState()
+    await expect(newWindow).toHaveURL('/sample')
+})
 
 test('auto wait assertion ', async({page})=>{
     page.goto('https://www.google.com/?gws_rd=ssl')
