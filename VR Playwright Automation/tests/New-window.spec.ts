@@ -36,14 +36,36 @@ test("new tab (diff context)", async ({page, browser}) =>{
     const context1 = await browser.newContext()
     const context2 = await browser.newContext()
     
-    
     const page1 = await context1.newPage()
     const page2 = await context2.newPage()
 
     await page1.goto ("https://www.google.com/?gws_rd=ssl")
+    await expect(page1).toHaveTitle(/Google/)
     await page2.goto ("https://mail.google.com/mail/u/0/")
+    await expect(page2.locator("!Any")).toBeVisible()
 
     await context1.close()
     await context2.close()
 
+    // Add cookies
+
+     context1.addCookies ([
+        {
+            name: 'Session id' , value: 'abc123', domain: 'amazon.in', path: '/'
+
+        }
+    ])
+         context2.addCookies ([
+        {
+            name: 'Session id' , value: 'xyz123', domain: 'amazon.in', path: '/'
+
+        }
+    ])
+   // Clear Cookies
+    await context1.clearCookies()
+    await context2.clearCookies()
+    console.log(await context1.clearCookies())
+    console.log(await context2.clearCookies())
+
+   
 })
