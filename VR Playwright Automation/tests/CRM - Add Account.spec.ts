@@ -28,7 +28,6 @@ await page.locator('#description').fill('This is test VR.');
 
 // Step 3: save
 await page.locator('#SAVE').first().click();
-
 // Demo data persists between runs: if duplicate account detected, continue with create
 if (/action=ShowDuplicates/.test(page.url())) {
   await page.getByRole('button', { name: 'Save' }).first().click();
