@@ -31,7 +31,7 @@ test('New tab (same context)', async({context})=>{
     console.log(cookies)
 })
     
-test("new tab (diff context)", async ({page, browser}) =>{
+test("new Window (diff context)", async ({page, browser}) =>{
 
     const context1 = await browser.newContext()
     const context2 = await browser.newContext()
