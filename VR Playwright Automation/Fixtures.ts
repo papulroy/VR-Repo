@@ -19,9 +19,12 @@ export const test = base.extend<MyFixtures>({
         await use(beforeUse)
     },
 
-    pageFixture: async ({loginfixture}, use: any) => {
+    pageFixture: async ({loginFixture}: {loginFixture: any}, use: any) => {
 
         const VRpage =  loginFixture + ".Great page"
         await use(VRpage)
     }
-})
+});
+
+
+    

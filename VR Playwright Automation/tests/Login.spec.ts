@@ -18,7 +18,7 @@ await expect(page.locator('h1')).toContainText('Welcome to the SuiteCRM 7 Demo')
 
 
 
-test('auto wait assertion ', async({page})=>{
+test('auto wait assertion ', async({page, pageFixture})=>{
     page.goto('https://www.google.com/?gws_rd=ssl')
     expect (page.locator('First')).toBeVisible()
     page.getByRole('button', {name: 'Feeling lucky'}).click()
