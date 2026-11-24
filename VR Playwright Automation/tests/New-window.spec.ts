@@ -8,6 +8,7 @@ test('New tab', async ({page , context}) =>{
     const newPage = await pagePromise
     newPage.waitForLoadState()
     await expect(newPage).toHaveURL(/sample/)
+    
 })
  
 test('New window', async ({page , context}) =>{

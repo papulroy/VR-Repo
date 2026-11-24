@@ -1,7 +1,8 @@
-import { test, expect , Browser, request } from "@playwright/test"
+import {expect , Browser, request } from "@playwright/test"
+import {test} from "../Fixtures"
 
 
-test("Login test", async ({page}) => {
+test("Login test", async ({page, loginFixture}) => {
 
 await page.goto('https://demo.suiteondemand.com/index.php?action=Login&module=Users');
 
@@ -25,15 +26,5 @@ test('auto wait assertion ', async({page})=>{
 })
 
     
-test('API test', async ({request}) =>{
 
-    const getresponse = await request.get("/api/v1/accounts/9898")
-    expect(getresponse).toBeOK
-    console.log(getresponse.json())
-
-    const postresponse = await request.post("api/v1/accounts/12345" , {data: {first: 'Vimal', last: 'Roy'}, })
-         expect(postresponse.status()).toBe(201);
-         expect(postresponse.statusText()).toBe('created');
-
-})
 
